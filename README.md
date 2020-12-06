@@ -2,7 +2,7 @@
 
 This tool is a rudimentary configuration management tool to configure servers for the production service of a simple PHP web application. It is a tool similar to Puppet or Chef.
 
-### Requirements for the rudimentary configuration management tool:
+## Requirements for the rudimentary configuration management tool:
 
 * If your tool has dependencies not available on a standard Ubuntu instance you may include a bootstrap.sh program to resolve them
 
@@ -33,7 +33,7 @@ Failed to check for processor microcode upgrades.
 
 the basic architecture of your tool, how to install it, how to write configurations, and how to invoke them
 
-Architecture of the Tool:
+## Architecture of the Tool:
 
 ``` bash
   Server_Config/
