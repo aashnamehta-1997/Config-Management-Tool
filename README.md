@@ -39,7 +39,7 @@ Architecture of the Tool:
 ``` bash
   Server_Config/
   +-- bootstrap.sh
-  +-- lumos_config.sh
+  +-- lamp_cm.sh
   +-- metadata.txt
   +-- debian_packages
       +-- install.txt
