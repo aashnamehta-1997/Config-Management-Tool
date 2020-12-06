@@ -1,0 +1,5 @@
+apache2
+mysql-server
+php-mysql
+php
+libapache2-mod-php
