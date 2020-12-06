@@ -30,7 +30,7 @@ Linux doesnot allow/recommend restarting the dbus (dbus.service) and systemd (sy
 ## Architecture of the Tool:
 
 ``` bash
-  Server_Config/
+  config_management_tool/
   +-- bootstrap.sh
   +-- lamp_cm.sh
   +-- metadata.txt
