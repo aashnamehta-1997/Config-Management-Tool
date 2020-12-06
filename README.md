@@ -4,24 +4,24 @@ This tool is a rudimentary configuration management tool to configure servers fo
 
 ## Requirements for the rudimentary configuration management tool:
 
-#### If your tool has dependencies not available on a standard Ubuntu instance you may include a bootstrap.sh program to resolve them
+### If your tool has dependencies not available on a standard Ubuntu instance you may include a bootstrap.sh program to resolve them
 
  bootstrap.sh file has been created to install needrestart which provides a mechanism for restarting a service when relevant files or packages are updated
 
-#### Your tool must provide an abstraction that allows specifying a file's content and metadata (owner, group, mode)
+### Your tool must provide an abstraction that allows specifying a file's content and metadata (owner, group, mode)
 
  metadata.txt provides an abstraction that allows specifying a file's content and metadata (owner, group, mode).To set metadata and file content, you will need to add key value pairs into the "metadata.txt" file. Key value pairs must be separated by "=" and each on it's own line. Again, trailing whitespace should be avoided. Inside the metadata file, you will find examples from which you can edit.
 
-#### Your tool must provide an abstraction that allows installing and removing Debian packages
+### Your tool must provide an abstraction that allows installing and removing Debian packages
 
 debian_packages includes install.txt and uninstall.txt. It is an abstraction that allows installing and removing Debian packages.
  
 
-#### Your tool must provide some mechanism for restarting a service when relevant files or packages are updated
+### Your tool must provide some mechanism for restarting a service when relevant files or packages are updated
 
  needrestart is used as a mechanism for restarting a service when relevant files or packages are updated
 
-#### Your tool must be idempotent - it must be safe to apply your configuration over and over again
+### Your tool must be idempotent - it must be safe to apply your configuration over and over again
 
 The tool is idempontent and safe to apply
 
