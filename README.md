@@ -1,5 +1,4 @@
 # Config-Management-Tool (OPS ASSIGNMENT 2)
-Config-Management-Tool
 
 This tool is a rudimentary configuration management tool to configure servers for the production service of a simple PHP web application. It is a tool similar to Puppet or Chef.
 
