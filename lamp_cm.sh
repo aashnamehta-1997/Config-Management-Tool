@@ -3,12 +3,12 @@
 
 sudo apt-get update
 
-if [ -s debian_packages/uninstall.txt ]; then
+if [ -s deb_packages/uninstall.txt ]; then
   
   declare -a removal_list
   while IFS='\n' read -r value; do
     removal_list+=( "${value}" )
-  done < "debian_packages/uninstall.txt"
+  done < "deb_packages/uninstall.txt"
 
  
   for rm_pkg in "${removal_list[@]}"
@@ -23,12 +23,12 @@ if [ -s debian_packages/uninstall.txt ]; then
 fi
 
 
-if [ -s debian_packages/install.txt ]; then
+if [ -s deb_packages/install.txt ]; then
   
   declare -a install_list
   while IFS='\n' read -r value; do
     install_list+=( "${value}" )
-  done < "debian_packages/install.txt"
+  done < "deb_packages/install.txt"
 
  
   for in_pkg in "${install_list[@]}"
