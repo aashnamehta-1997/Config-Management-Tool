@@ -23,19 +23,9 @@ debian_packages includes install.txt and uninstall.txt. It is an abstraction tha
 
 #### * Your tool must be idempotent - it must be safe to apply your configuration over and over again
 
-The tool is idempontent and safe to apply
+The tool is idempontent and safe to apply. The tool may require a system restart once the script has ran because of the needrestart command. The needrestart command checks if a restart is required after relevant files or packages are updated. 
+Linux doesnot allow/recommend restarting the dbus (dbus.service) and systemd (systemd-journald.service, systemd-logind.service) manually so it might prompt for a system restart.The other services are restarted automatically by the Config-Mangement-Tool.
 
-The tool may require a reboot once the script has ran because of the needrestart command. The needrestart command checks if a restart is required after relevant files or packages are updated. 
-
-Linux doesnot allow/recommend restarting the following services manually:
-
-dbus (dbus.service)
-systemd (systemd-journald.service, systemd-logind.service)
-
-so It might prompt a system restart is required
-
-
-Failed to check for processor microcode upgrades.
 
 ## Architecture of the Tool:
 
