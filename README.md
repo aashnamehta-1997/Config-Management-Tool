@@ -4,34 +4,38 @@ This tool is a rudimentary configuration management tool to configure servers fo
 
 ## Requirements for the rudimentary configuration management tool:
 
-* If your tool has dependencies not available on a standard Ubuntu instance you may include a bootstrap.sh program to resolve them
+#### If your tool has dependencies not available on a standard Ubuntu instance you may include a bootstrap.sh program to resolve them
 
  bootstrap.sh file has been created to install needrestart which provides a mechanism for restarting a service when relevant files or packages are updated
 
-* Your tool must provide an abstraction that allows specifying a file's content and metadata (owner, group, mode)
+#### Your tool must provide an abstraction that allows specifying a file's content and metadata (owner, group, mode)
 
  metadata.txt provides an abstraction that allows specifying a file's content and metadata (owner, group, mode).To set metadata and file content, you will need to add key value pairs into the "metadata.txt" file. Key value pairs must be separated by "=" and each on it's own line. Again, trailing whitespace should be avoided. Inside the metadata file, you will find examples from which you can edit.
 
-* Your tool must provide an abstraction that allows installing and removing Debian packages
+#### Your tool must provide an abstraction that allows installing and removing Debian packages
 
 debian_packages includes install.txt and uninstall.txt. It is an abstraction that allows installing and removing Debian packages.
  
 
-* Your tool must provide some mechanism for restarting a service when relevant files or packages are updated
+#### Your tool must provide some mechanism for restarting a service when relevant files or packages are updated
 
  needrestart is used as a mechanism for restarting a service when relevant files or packages are updated
 
-* Your tool must be idempotent - it must be safe to apply your configuration over and over again
-The tool may require a reboot once the script has ran because of the needrestart command. dbus, systemd
+#### Your tool must be idempotent - it must be safe to apply your configuration over and over again
 
-/etc/needrestart/restart.d/dbus.service
- systemctl restart systemd-journald.service
- systemctl restart systemd-logind.service
+The tool is idempontent and safe to apply
+
+The tool may require a reboot once the script has ran because of the needrestart command. The needrestart command checks if a restart is required after relevant files or packages are updated. 
+
+Linux doesnot allow/recommend restarting the following services manually:
+
+dbus (dbus.service)
+systemd (systemd-journald.service, systemd-logind.service)
+
+so It might prompt a system restart is required
+
 
 Failed to check for processor microcode upgrades.
-
-
-the basic architecture of your tool, how to install it, how to write configurations, and how to invoke them
 
 ## Architecture of the Tool:
 
