@@ -31,11 +31,11 @@ Linux doesnot allow/recommend restarting the dbus (dbus.service) and systemd (sy
 
 ``` bash
   config_management_tool/
-  +-- dependencies
-      +-- bootstrap.sh
   +-- deb-packages
       +-- install.txt
       +-- uninstall.txt
+  +-- dependencies
+      +-- bootstrap.sh
   +-- metadata-userdata
       +-- metadata.txt
       +-- userdata.txt
