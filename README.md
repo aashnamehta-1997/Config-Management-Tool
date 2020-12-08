@@ -61,7 +61,7 @@ cd config-management-tool/
 ### Make the scripts executable
 chmod +x lamp_cm.sh bootstrap.sh
 ### Install dependency
-./bootstrap.sh
+dependencies/bootstrap.sh
 ### Run the script
 ./lamp_cm.sh
  
