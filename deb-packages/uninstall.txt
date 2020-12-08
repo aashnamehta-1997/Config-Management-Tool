@@ -1,1 +1,3 @@
-
+php-mysql
+php
+libapache2-mod-php

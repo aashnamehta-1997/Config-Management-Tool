@@ -3,12 +3,12 @@
 
 sudo apt-get update
 
-if [ -s deb_packages/uninstall.txt ]; then
-  
+if [ -s deb-packages/uninstall.txt ]; then
+  echo "inside if rm"
   declare -a rm_list
-  while IFS='\n' read -r rm_value; do
-    rm_list+=( "${rm_value}" )
-  done < "deb_packages/uninstall.txt"
+  while IFS='\n' read -r value; do
+    rm_list+=( "${value}" )
+  done < "deb-packages/uninstall.txt"
 
  
   for rm_pkg in "${rm_list[@]}"
@@ -22,13 +22,12 @@ if [ -s deb_packages/uninstall.txt ]; then
   done
 fi
 
-
-if [ -s deb_packages/install.txt ]; then
-  
+if [ -s deb-packages/install.txt ]; then
+  echo "inside if install"
   declare -a install_list
-  while IFS='\n' read -r install_value; do
-    install_list+=( "${install_value}" )
-  done < "deb_packages/install.txt"
+  while IFS='\n' read -r value; do
+    install_list+=( "${value}" )
+  done < "deb-packages/install.txt"
 
  
   for in_pkg in "${install_list[@]}"
@@ -54,6 +53,7 @@ fi
 
 
 if [ -s metadata-userdata/metadata.txt ]; then
+  echo "inside metadata.txt"	
   declare -A metadata
   while IFS== read -r key value; do
     metadata[$key]=$value
@@ -62,12 +62,12 @@ if [ -s metadata-userdata/metadata.txt ]; then
   sudo chown "${metadata[owner]}" "${metadata[file]}"
   sudo chgrp "${metadata[group]}" "${metadata[file]}"
 fi
-
-if [ -s metadata-userdata/php-file-content.txt ]; then
+if [ -s metadata-userdata/userdata.txt ]; then
+  echo "inside userdata.txt"    
   declare -A userdata
   while IFS== read -r key value; do
-   userdata[$key]=$value
-  done < "metadata-userdata/php-file-content.txt"
+    userdata[$key]=$value
+  done < "metadata-userdata/userdata.txt"
   sudo echo "${userdata[content]}" > "${userdata[file]}"
 fi
 
