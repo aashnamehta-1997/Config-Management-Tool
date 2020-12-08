@@ -37,7 +37,7 @@ Linux doesnot allow/recommend restarting the dbus (dbus.service) and systemd (sy
   +-- metadata-userdata
       +-- metadata.txt
       +-- userdata.txt
-  +-- debian_packages
+  +-- deb-packages
       +-- install.txt
       +-- uninstall.txt
 ```
