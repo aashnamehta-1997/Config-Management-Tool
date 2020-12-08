@@ -10,11 +10,11 @@ bootstrap.sh file has been created to install needrestart which provides a mecha
 
 #### * Your tool must provide an abstraction that allows specifying a file's content and metadata (owner, group, mode)
 
-metadata.txt provides an abstraction that allows specifying a file's content and metadata (owner, group, mode).To set metadata and file content, you will need to add key value pairs into the "metadata.txt" file. Key value pairs must be separated by "=" and each on it's own line. Again, trailing whitespace should be avoided. Inside the metadata file, you will find examples from which you can edit.
+metadata.txt provides an abstraction that allows specifying metadata (owner, group, mode) and userdata.txt stores the file's content.The key value pairs are extracted from metadata.txt and userdata.txt by Internal File Separator. Key value pairs must be separated by "=" and each on it's own line. Again, trailing whitespace should be avoided.
 
 #### * Your tool must provide an abstraction that allows installing and removing Debian packages
 
-debian_packages includes install.txt and uninstall.txt. It is an abstraction that allows installing and removing Debian packages.
+deb-packages includes install.txt and uninstall.txt. It is an abstraction that allows installing and removing Debian packages.
  
 
 #### * Your tool must provide some mechanism for restarting a service when relevant files or packages are updated
@@ -46,13 +46,13 @@ Linux doesnot allow/recommend restarting the dbus (dbus.service) and systemd (sy
 ## Configuration:
 
 ### Installation of a Package:
-To install a package, add the package name to the text file labeled "install.txt" inside the "debian_packages" directory. Each package name should be on it's own line without any trailing whitespace.
+To install a package, add the package name to the text file labeled "install.txt" inside the "deb-packages" directory. Each package name should be on it's own line without any trailing whitespace.
 
 ### Removal of a Package:
-For removing an installed package, follow you will do the same as you did to install a package. This time you will add the package names to the "uninstall.txt" file inside the "debian_packages" directory.
+For removing an installed package, follow you will do the same as you did to install a package. This time you will add the package names to the "uninstall.txt" file inside the "deb-packages" directory.
 
 ### Setting the Metadata:
-To set metadata and file content, you will need to add key value pairs into the "metadata.txt" file. Key value pairs must be separated by "=" and each on it's own line. Again, trailing whitespace should be avoided. Inside the metadata file, you will find examples from which you can edit.
+To set metadata and file content, you will need to add key value pairs into the "metadata.txt" file and "userdata.txt". Key value pairs must be separated by "=" and each on it's own line. Again, trailing whitespace should be avoided. Inside the metadata file, you will find examples from which you can edit.
 
 ## Installation and Invokation Procedure:
 
@@ -61,7 +61,7 @@ scp -r config-management-tool/ your_username@remotehost
 ### CD into the directory
 cd config-management-tool/
 ### Make the scripts executable
-chmod +x lamp_cm.sh bootstrap.sh
+chmod +x lamp_cm.sh dependencies/bootstrap.sh
 ### Install dependency
 dependencies/bootstrap.sh
 ### Run the script
