@@ -24,7 +24,7 @@ needrestart is used as a mechanism for restarting a service when relevant files 
 
 The tool is idempontent and safe to apply. 
 
-## Note
+## Note:
 1. Please make sure that the versions of different packages are available and are compatible with each other eg. versions of PHP less than 5 are not available by default in Linux and package version compatibility should also be checked.
 
 2. Only one version number of a package should be installed to avoid discrepancies. eg. php7.2 and libapache2-mod-php7.2 should be installed.                    php7.2 and libapache2-mod-php7.1 should not be installed. 
