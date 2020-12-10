@@ -31,7 +31,7 @@ if [ -s deb-packages/uninstall.txt ]; then
       # Removes all the files or packages that were downloaded as a dependency to this package
       sudo apt-get autoremove 
       
-      # Removes any residual package
+      # Removes any residual package; r: the package was marked for removal and c: the configuration files are currently present in the system
       sudo apt-get purge -y $(dpkg --list |grep '^rc' |awk '{print $2}') 
       
       # Removes the retrieved packages from the local cache
@@ -58,7 +58,6 @@ if [ -s deb-packages/install.txt ]; then
   # Installation of packages from the install.txt
   for in_pkg in "${install_list[@]}"
   do
-    # Checks if the packages to be installed are present in the package manager
     if ! dpkg -l | grep "${in_pkg}"; then
     
       # Installs the package mentioned in the install_list
