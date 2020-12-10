@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
-# This tool will check for updates and existing files before proceeding to setup
+# Config-Management-Tool will check for package updates and existing files before proceeding to setup
 # and configure LAMP stack to run a simple PHP web app.
-# See included README for instructions on usage and configuration.
 
-# Check for package manager updates
+# Checks for package updates
 sudo apt-get update
 
 # Checks if the uninstall.txt exists or not
@@ -21,7 +20,7 @@ if [ -s deb-packages/uninstall.txt ]; then
   done < "deb-packages/uninstall.txt"
 
 
-# Removal of the packages from the removal list 
+# To remove the packages from the removal list 
   for rm_pkg in "${rm_list[@]}"
   do
     if dpkg -l | grep -i "${rm_pkg}"; then
@@ -119,4 +118,5 @@ if [ -s metadata-userdata/userdata.txt ]; then
   sudo echo "${userdata[content]}" > "${userdata[file]}"
 fi
 
+# Checks which services need to be restarted after package upgrades.
 needrestart
