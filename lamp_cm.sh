@@ -9,13 +9,10 @@ sudo apt-get update
 if [ -s deb-packages/uninstall.txt ]; then
 # Declares an array rm_list
   declare -a rm_list
-  
 # Internal File Separator seperates the packages linewise and stores them in var value 
   while IFS='\n' read -r value; do
-  
 # The value (package name to be uninstalled) is added to the removal list
     rm_list+=( "${value}" )
-    
 # Fetches the contents from file uninstall.txt
   done < "deb-packages/uninstall.txt"
 
@@ -24,16 +21,12 @@ if [ -s deb-packages/uninstall.txt ]; then
   for rm_pkg in "${rm_list[@]}"
   do
     if dpkg -l | grep -i "${rm_pkg}"; then
-    
       # Removes a particular package 
       sudo apt-get remove "${rm_pkg}" 
-      
       # Removes all the files or packages that were downloaded as a dependency to this package
       sudo apt-get autoremove 
-      
       # Removes any residual package; r: the package was marked for removal and c: the configuration files are currently present in the system
       sudo apt-get purge -y $(dpkg --list |grep '^rc' |awk '{print $2}') 
-      
       # Removes the retrieved packages from the local cache
       sudo apt-get clean 
     fi
@@ -42,16 +35,12 @@ fi
 
 # Checks if the install.txt exists or not
 if [ -s deb-packages/install.txt ]; then
-  
   # Declares an array install_list
   declare -a install_list
-  
   # Internal File Separator seperates the packages linewise and stores them in var value 
   while IFS='\n' read -r value; do
-      
     # The value (package name to be installed) is added to the install list  
     install_list+=( "${value}" )
-  
   # Fetches the contents from uninstall.txt
   done < "deb-packages/install.txt"
 
@@ -59,15 +48,11 @@ if [ -s deb-packages/install.txt ]; then
   for in_pkg in "${install_list[@]}"
   do
     if ! dpkg -l | grep "${in_pkg}"; then
-    
       # Installs the package mentioned in the install_list
       sudo apt-get install -y "${in_pkg}"
-      
       # Installs mysql-server dependencies
       if [ "${in_pkg}" == "mysql-server" ]; then
-       
         sudo mysql_install_db
-
         sudo mysql_secure_installation
       fi
     fi
@@ -84,10 +69,8 @@ fi
 
 # Checks if the metadata file containing the package permissions exists or not
 if [ -s metadata-userdata/metadata.txt ]; then
-
 # Declares an Associative Array for fetching the metadata
   declare -A metadata
-  
   # Internal File Separator is used to get key and value and stores it in an associative array
   while IFS== read -r key value; do
     metadata[$key]=$value
@@ -102,17 +85,13 @@ fi
 
 # Declares an Associative Array for fetching the userdata
 if [ -s metadata-userdata/userdata.txt ]; then 
-
   # Declares an Associative Array for fetching the userdata
   declare -A userdata
-  
   # Internal File Separator is used to get key and value and store it in an associative array
   while IFS== read -r key value; do
     userdata[$key]=$value
-    
   # Fetches the contents from file uninstall.txt
   done < "metadata-userdata/userdata.txt"
-  
   # Stores the php file content in index.php
   sudo echo "${userdata[content]}" > "${userdata[file]}"
 fi
