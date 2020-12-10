@@ -24,10 +24,13 @@ needrestart is used as a mechanism for restarting a service when relevant files 
 
 The tool is idempontent and safe to apply. 
 
-### Note
+## Note
 1. Please make sure that the versions of different packages are available and are compatible with each other eg. versions of PHP less than 5 are not available by default in Linux and package version compatibility should also be checked.
+
 2. Only one version number of a package should be installed to avoid discrepancies. eg. php7.2 and libapache2-mod-php7.2 should be installed.                    php7.2 and libapache2-mod-php7.1 should not be installed. 
+
 3. We should avoid deleting from the terminal directly and should use the Config-Management-Tool to remove all residual or dependent packages as well.
+
 4. The Machines may require a reboot due to the needrestart functionality which prompts for a service restart whenever packages are updated.Linux doesnot allow/recommend restarting the dbus (dbus.service) and systemd (systemd-journald.service, systemd-logind.service) manually so it might prompt for a system restart.The other services are restarted automatically by the Config-Mangement-Tool.
 
 ## Architecture of the Tool:
